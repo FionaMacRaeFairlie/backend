@@ -84,6 +84,7 @@ exports.peters_entries = function(req, res) {
 }
 
 exports.show_user_entries = function(req, res) {
+                console.log('filtering author name', req.params.author);
                 let user = req.params.author;
                 db.getEntriesByUser(user).then(
                     (entries) => {
@@ -96,5 +97,18 @@ exports.show_user_entries = function(req, res) {
                 });
 }
 
+exports.search_user_entries  = function(req, res) {
+    console.log('searching author name', req.body.name);
+    let user = req.body.name;
+    db.getEntriesByUser(user).then(
+        (entries) => {
+         res.render('entries', {
+            'title': 'Guest Book',
+             'entries': entries
+    });
+ }).catch((err) => {
+    console.log('error handling search', err);
+    });
+}
 
-        
+ 

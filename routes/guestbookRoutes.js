@@ -3,6 +3,7 @@ const router = express.Router();
 const controller = require('../controllers/guestbookControllers.js');
 
 router.get("/", controller.landing_page);
+router.post("/", controller.landing_page);
 
 router.get('/guestbook', controller.entries_list);
 
@@ -12,6 +13,7 @@ router.get('/new', controller.new_entries);
 router.post('/new', controller.post_new_entry);
 
 router.get('/posts/:author', controller.show_user_entries);
+router.post('/searchPosts', controller.search_user_entries);
 
 router.get('/json', controller.show_json);  
 

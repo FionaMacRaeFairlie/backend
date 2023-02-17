@@ -4,11 +4,20 @@
 </head>
 <body>
 <h1>{{title}}</h1>
-<div class="text-right">
-  <a href="/new" class="btn btn-primary">
-    Write in the guestbook
-  </a>
-</div>
+ <div class="mb-5">
+   <h2 class="fs-4 fw-bold">View an author</h2>
+     <form action="/searchPosts" method="POST">
+        <fieldset>
+         <div class="mb-3">
+            <label class="form-label">Search by author name</label>
+            <input class="form-control" type="text" id="empID" name="name" required>
+          </div>
+          <div class="mb-3">
+             <button class="btn btn-primary" type="submit">Submit</button>
+           </div>
+          </fieldset>
+        </form>
+    </div>
 {{#entries}}
 <div class="card">
   <div class="card-body">
@@ -21,7 +30,13 @@
 </div>
 </div>
 {{/entries}}
-
+<form action="/" method="POST">
+        <fieldset>
+          <div class="mb-3">
+             <button class="btn btn-primary" type="submit">Show all</button>
+           </div>
+          </fieldset>
+        </form>
 {{^entries}}
   No entries yet.
 {{/entries}}
